@@ -63,7 +63,7 @@ async function createDatabase(retryCount = 0) {
     if (existing) {
       if (RESET) {
         log('reset database...');
-        await sql`select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where pid <> pg_backend_pid();`;
+        await sql`select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where datname = ${PGDATABASE} and pid <> pg_backend_pid();`;
         await sql`drop database if exists ${sql(PGDATABASE)};`;
         await sql`create database ${sql(PGDATABASE)};`;
       } else {
