@@ -1,7 +1,7 @@
 {
   "name": "@eezing/testies",
-  "version": "1.0.2",
-  "homepage": "https://github.com/eezing/things/testies#readme",
+  "version": "1.0.4",
+  "homepage": "https://github.com/eezing/things/tree/main/packages/testies",
   "bugs": {
     "url": "https://github.com/eezing/things/issues"
   },
@@ -11,5 +11,8 @@
   },
   "license": "ISC",
   "author": "Eric Zingeler",
-  "bin": "./index.mjs"
+  "bin": "./index.mjs",
+  "publishConfig": {
+    "access": "public"
+  }
 }
