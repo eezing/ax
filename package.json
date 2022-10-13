@@ -19,7 +19,8 @@
   "scripts": {
     "sortpkg": "npx sort-package-json && npm exec -ws npx sort-package-json",
     "test": "npm run test:prettier",
-    "test:prettier": "prettier -c ."
+    "test:prettier": "prettier -c .",
+    "prepare": "husky install"
   },
   "prettier": {
     "bracketSpacing": true,
@@ -27,6 +28,7 @@
     "singleQuote": true
   },
   "devDependencies": {
+    "husky": "^8.0.1",
     "prettier": "^2.7.1"
   }
 }
