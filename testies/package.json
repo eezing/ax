@@ -1,7 +1,0 @@
-{
-  "name": "@eezing/testies",
-  "version": "1.0.2",
-  "bin": "./index.mjs",
-  "author": "Eric Zingeler",
-  "license": "ISC"
-}

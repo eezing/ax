@@ -1,0 +1,15 @@
+{
+  "name": "@eezing/testies",
+  "version": "1.0.2",
+  "homepage": "https://github.com/eezing/things/testies#readme",
+  "bugs": {
+    "url": "https://github.com/eezing/things/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eezing/things.git"
+  },
+  "license": "ISC",
+  "author": "Eric Zingeler",
+  "bin": "./index.mjs"
+}
