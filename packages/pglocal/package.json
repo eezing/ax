@@ -1,0 +1,26 @@
+{
+  "name": "@eezing/pglocal",
+  "version": "1.0.2",
+  "homepage": "https://github.com/eezing/things/tree/main/packages/pglocal",
+  "bugs": {
+    "url": "https://github.com/eezing/things/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eezing/things.git"
+  },
+  "license": "ISC",
+  "author": "Eric Zingeler",
+  "bin": "./index.mjs",
+  "peerDependencies": {
+    "postgres": "^3.x"
+  },
+  "peerDependenciesMeta": {
+    "postgres": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
