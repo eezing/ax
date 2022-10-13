@@ -1,5 +1,7 @@
 {
-  "name": "testies",
+  "name": "@eezing/testies",
   "version": "1.0.0",
-  "bin": "./index.mjs"
+  "bin": "index.js",
+  "author": "Eric Zingeler",
+  "license": "ISC"
 }
