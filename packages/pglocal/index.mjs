@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 import postgres from 'postgres';
 
 const NAME = process.env.NAME ?? 'pglocal';
-const VERSION = process.env.VERSION ?? '14';
+const TAG = process.env.TAG;
 const RESET = process.env.RESET === 'true';
 
 const PGHOST = process.env.PGHOST ?? 'localhost';
@@ -41,7 +41,9 @@ async function createContainer() {
   } catch {
     log('run new docker container...');
     execSync(
-      `docker run --name ${NAME} -p ${PGPORT}:5432 -e POSTGRES_USER=${PGUSER} -e POSTGRES_PASSWORD=${PGPASSWORD} -e POSTGRES_DB=postgres -d postgres:${VERSION}`
+      `docker run --name ${NAME} -p ${PGPORT}:5432 -e POSTGRES_USER=${PGUSER} -e POSTGRES_PASSWORD=${PGPASSWORD} -e POSTGRES_DB=postgres -d postgres${
+        TAG ? `:${TAG}` : ''
+      }`
     );
   }
 }
