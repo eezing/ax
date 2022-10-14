@@ -65,7 +65,7 @@ async function createDatabase(retryCount = 0) {
     if (existing) {
       if (RESET) {
         log('reset database...');
-        await sql`select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where datname = ${PGDATABASE} and pid <> pg_backend_pid();`;
+        await sql`select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where pid <> pg_backend_pid();`;
         await sql`drop database if exists ${sql(PGDATABASE)};`;
         await sql`create database ${sql(PGDATABASE)};`;
       } else {
@@ -82,12 +82,17 @@ async function createDatabase(retryCount = 0) {
 
     log('database ready');
   } catch (error) {
-    if (error?.message?.includes('system is starting') && retryCount < 10) {
-      if (retryCount === 0) {
-        log('database server starting...');
+    if (retryCount < 10) {
+      if (
+        error?.message?.includes('system is starting') ||
+        error?.message?.includes('ECONN')
+      ) {
+        if (retryCount === 0) {
+          log('database server starting...');
+        }
+        await new Promise((res) => setTimeout(res, 100));
+        return createDatabase(++retryCount);
       }
-      await new Promise((res) => setTimeout(res, 50));
-      return createDatabase(retryCount++);
     }
 
     throw error;
