@@ -24,7 +24,7 @@ const PGDATABASE = process.env.PGDATABASE ?? 'zombie';
         `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`
       )} in ${bling(NAME)} docker container`
     );
-    await createContainer();
+    // await createContainer();
     await createDatabase();
   } catch (error) {
     throw error;
@@ -80,9 +80,12 @@ async function createDatabase(retryCount = 0) {
       await sql`create database ${sql(PGDATABASE)};`;
     }
 
+    await sql.end();
     log('database ready');
   } catch (error) {
-    if (retryCount < 10) {
+    await sql.end();
+
+    if (retryCount < 30) {
       if (
         error?.message?.includes('system is starting') ||
         error?.message?.includes('ECONN')
@@ -96,8 +99,6 @@ async function createDatabase(retryCount = 0) {
     }
 
     throw error;
-  } finally {
-    sql.end();
   }
 }
 
