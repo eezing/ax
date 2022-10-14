@@ -24,7 +24,7 @@ const PGDATABASE = process.env.PGDATABASE ?? 'zombie';
         `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`
       )} in ${bling(NAME)} docker container`
     );
-    // await createContainer();
+    await createContainer();
     await createDatabase();
   } catch (error) {
     throw error;
