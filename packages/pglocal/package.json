@@ -21,6 +21,7 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "git-tag-version": false
   }
 }
