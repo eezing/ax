@@ -13,6 +13,7 @@
   "author": "Eric Zingeler",
   "bin": "./index.mjs",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "git-tag-version": false
   }
 }
