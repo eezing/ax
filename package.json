@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "sortpkg": "npx sort-package-json && npm exec -ws npx sort-package-json",
+    "sortpkg": "npm exec -ws --include-workspace-root npx sort-package-json@latest",
     "test": "npm run test:prettier && npm run test -ws --if-present",
     "test:prettier": "prettier -c ."
   },
