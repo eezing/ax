@@ -17,6 +17,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "npm run build -ws --if-present",
     "prepare": "husky install",
     "sortpkg": "npm exec -ws --include-workspace-root npx sort-package-json@latest",
     "test": "npm run test:prettier && npm run test -ws --if-present",
